@@ -12,6 +12,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 /**
@@ -49,20 +51,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         if(convertView == null){
             convertView = LayoutInflater.from(context).inflate(R.layout.listview_row, null);
-            viewHolder = new ViewHolder();
-            viewHolder.imageViewProfile = convertView.findViewById(R.id.imageViewProfile);
-            viewHolder.textViewUsername = convertView.findViewById(R.id.textViewUsername);
-            viewHolder.textViewTwittername = convertView.findViewById(R.id.textViewTwittername);
-            viewHolder.textViewTweetTime = convertView.findViewById(R.id.textViewTweetTime);
-            viewHolder.textViewTweetText = convertView.findViewById(R.id.textViewTweetText);
-
-            viewHolder.imageViewChats = convertView.findViewById(R.id.imageViewChats);
-            viewHolder.textViewChats = convertView.findViewById(R.id.textViewChats);
-            viewHolder.imageViewRetweet = convertView.findViewById(R.id.imageViewRetweet);
-            viewHolder.textViewRetweet = convertView.findViewById(R.id.textViewRetweet);
-            viewHolder.imageViewLike = convertView.findViewById(R.id.imageViewLike);
-            viewHolder.textViewLike = convertView.findViewById(R.id.textViewLike);
-            viewHolder.imageViewPrivateMessage = convertView.findViewById(R.id.imageViewPrivateMessage);
+            viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         }else{
             viewHolder = (ViewHolder)convertView.getTag();
@@ -89,18 +78,23 @@ public class ListViewAdapter extends BaseAdapter {
     }
 
     class ViewHolder{
-        ImageView imageViewProfile;
-        TextView textViewUsername;
-        TextView textViewTwittername;
-        TextView textViewTweetTime;
-        TextView textViewTweetText;
 
-        ImageView imageViewChats;
-        TextView textViewChats;
-        ImageView imageViewRetweet;
-        TextView textViewRetweet;
-        ImageView imageViewLike;
-        TextView textViewLike;
-        ImageView imageViewPrivateMessage;
+        ViewHolder(View view){
+            ButterKnife.bind(this, view);
+        }
+
+        @BindView(R.id.imageViewProfile) ImageView imageViewProfile;
+        @BindView(R.id.textViewUsername) TextView textViewUsername;
+        @BindView(R.id.textViewTwittername) TextView textViewTwittername;
+        @BindView(R.id.textViewTweetTime) TextView textViewTweetTime;
+        @BindView(R.id.textViewTweetText) TextView textViewTweetText;
+
+        @BindView(R.id.imageViewChats) ImageView imageViewChats;
+        @BindView(R.id.textViewChats) TextView textViewChats;
+        @BindView(R.id.imageViewRetweet) ImageView imageViewRetweet;
+        @BindView(R.id.textViewRetweet) TextView textViewRetweet;
+        @BindView(R.id.imageViewLike) ImageView imageViewLike;
+        @BindView(R.id.textViewLike) TextView textViewLike;
+        @BindView(R.id.imageViewPrivateMessage) ImageView imageViewPrivateMessage;
     }
 }
